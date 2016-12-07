@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jcoreio/mindfront-redux-utils-immutable.git"
+    "url": "git+https://github.com/jcoreio/redux-utils-immutable.git"
   },
   "keywords": [
     "redux",
@@ -43,9 +43,9 @@
   "author": "Andy Edwards",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jcoreio/mindfront-redux-utils-immutable/issues"
+    "url": "https://github.com/jcoreio/redux-utils-immutable/issues"
   },
-  "homepage": "https://github.com/jcoreio/mindfront-redux-utils-immutable#readme",
+  "homepage": "https://github.com/jcoreio/redux-utils-immutable#readme",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",

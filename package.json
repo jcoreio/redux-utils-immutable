@@ -1,7 +1,7 @@
 {
-  "name": "es2015-library-skeleton",
-  "version": "3.0.0",
-  "description": "my personal skeleton for ES2015 library NPM packages",
+  "name": "mindfront-redux-utils-immutable",
+  "version": "1.0.0",
+  "description": "utilities for working with redux and immutable.js",
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint src test",
@@ -33,17 +33,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jedwards1211/es2015-library-skeleton.git"
+    "url": "git+https://github.com/jcoreio/mindfront-redux-utils-immutable.git"
   },
   "keywords": [
-    "es2015"
+    "redux",
+    "immutable",
+    "immutable.js"
   ],
   "author": "Andy Edwards",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jedwards1211/es2015-library-skeleton/issues"
+    "url": "https://github.com/jcoreio/mindfront-redux-utils-immutable/issues"
   },
-  "homepage": "https://github.com/jedwards1211/es2015-library-skeleton#readme",
+  "homepage": "https://github.com/jcoreio/mindfront-redux-utils-immutable#readme",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",

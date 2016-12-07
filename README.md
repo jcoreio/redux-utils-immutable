@@ -1,23 +1,5 @@
-# es2015-library-skeleton
+# mindfront-redux-utils-immutable
 
-[![Build Status](https://travis-ci.org/jedwards1211/es2015-library-skeleton.svg?branch=master)](https://travis-ci.org/jedwards1211/es2015-library-skeleton)
-[![Coverage Status](https://coveralls.io/repos/github/jedwards1211/es2015-library-skeleton/badge.svg?branch=master)](https://coveralls.io/github/jedwards1211/es2015-library-skeleton?branch=master)
+[![Build Status](https://travis-ci.org/jcoreio/redux-utils-immutable.svg?branch=master)](https://travis-ci.org/jcoreio/redux-utils-immutable)
+[![Coverage Status](https://coveralls.io/repos/github/jcoreio/redux-utils-immutable/badge.svg?branch=master)](https://coveralls.io/github/jcoreio/redux-utils-immutable?branch=master)
 
-This is my personal skeleton for creating an ES2015 library npm package.  You are welcome to use it.
-
-## Tools used
-
-* babel 6
-* mocha
-* chai
-* istanbul
-* nyc
-* babel-plugin-istanbul
-* eslint
-* eslint-watch
-* flow
-* flow-watch
-* Travis CI
-* Coveralls
-
-The `prepublish` script checks the output of `eslint` and `flow` and runs tests.

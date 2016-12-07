@@ -76,3 +76,21 @@ reducer(MyRecord(), {type: 'a'})  // MyRecord({a: 1, b: 0})
 reducer(MyRecord(), {type: 'b'})  // MyRecord({b: 1, b: 0})
 reducer(MyRecord(), {type: 'ab'}) // MyRecord({a: 1, b: 1})
 ```
+
+## subpathReducer
+```es6
+import {subpathReducer} from 'mindfront-redux-utils-immutable'
+```
+
+```es6
+function subpathReducer(
+  path: Array<any>,
+  initialState?: Immutable.Collection.Keyed | Record
+): Reducer => Reducer
+```
+
+Creates a reducer that applies the decorated reducer at the given `path` within the `state`.  This is basically
+equivalent to `(state = initialState, action) => state.updateIn(path, reducer)` except that if the decorated reducer
+has `actionHandlers`, the created reducer will have corresponding `actionHandlers` so that other utils can optimize it.
+
+

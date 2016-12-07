@@ -85,7 +85,7 @@ import {subpathReducer} from 'mindfront-redux-utils-immutable'
 
 ```es6
 function subpathReducer(
-  path: Array<any>,
+  path: Array<any> | (action: Action) => Array<any>,
   initialState?: Immutable.Collection.Keyed | Record
 ): Reducer => Reducer
 ```
@@ -93,5 +93,8 @@ function subpathReducer(
 Creates a reducer that applies the decorated reducer at the given `path` within the `state`.  This is basically
 equivalent to `(state = initialState, action) => state.updateIn(path, reducer)` except that if the decorated reducer
 has `actionHandlers`, the created reducer will have corresponding `actionHandlers` so that other utils can optimize it.
+
+If you pass a function for `path`, `subpathReducer` will get the actual path by calling `path(action)` for each
+`action`.
 
 

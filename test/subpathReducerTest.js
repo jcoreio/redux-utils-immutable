@@ -27,5 +27,16 @@ describe('subpathReducer', () => {
     expect(reducer(undefined, {type: 'INCREMENT'})).to.equal(fromJS({a: {b: 1}}))
     expect(reducer(fromJS({a: {b: 2}}), {type: 'INCREMENT'})).to.equal(fromJS({a: {b: 3}}))
   })
+  it("calls subpath with action if it's a function", () => {
+    const reducer = subpathReducer(action => action.meta.reduxPath, Map())(createReducer(0, {
+      INCREMENT: state => state + 1
+    }))
+
+    expect(reducer.actionHandlers.INCREMENT).to.be.an.instanceof(Function)
+
+    expect(reducer(undefined, {})).to.equal(fromJS({}))
+    expect(reducer(undefined, {type: 'INCREMENT', meta: {reduxPath: ['a', 'b']}})).to.equal(fromJS({a: {b: 1}}))
+    expect(reducer(fromJS({a: 2}), {type: 'INCREMENT', meta: {reduxPath: ['a']}})).to.equal(fromJS({a: 3}))
+  })
 })
 

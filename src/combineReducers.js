@@ -22,11 +22,18 @@ export default function combineReducers(reducers, createInitialState = Map) {
   const initialState = createInitialState(initialStateObj)
 
   const combineBase = reducers => {
-    const result = (state = initialState, action) => state.withMutations(mutableState => reduce(
-      reducers,
-      (nextState, reducer, key) => nextState.update(key, value => reducer(value, action)),
-      mutableState)
-    )
+    let result
+    if (size(reducers) > 1) {
+      result = (state = initialState, action) => state.withMutations(mutableState => reduce(
+        reducers,
+        (nextState, reducer, key) => nextState.update(key, value => reducer(value, action)),
+        mutableState)
+      )
+    } else {
+      const key = Object.keys(reducers)[0]
+      const reducer = reducers[key]
+      result = (state = initialState, action) => state.update(key, value => reducer(value, action))
+    }
     result.domainHandlers = reducers
     return result
   }

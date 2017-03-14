@@ -23,6 +23,34 @@ Unlike the `combineReducers` implementation from the `redux-immutable` package, 
 highly optimized.  If multiple reducers have `actionHandlers`, they will be recombined so that all mutations for
 one of those actions are done inside a single `state.withMutations` call.
 
+As an example, let's say we have the following reducer:
+```js
+const setUser = (oldUser, action) => action.newUser
+const updateUser = (user, action) => user.merge(action.payload)
+const incUserChangeCount = (count = 0) => count + 1
+
+const reducer = combineReducers({
+  user: createReducer({
+    [SET_USER]: setUser,
+    [UPDATE_USER]: updateUser,
+  }),
+  userChangeCount: createReducer({
+    [SET_USER]: incUserChangeCount,
+  }),
+})
+```
+
+`combineReducers` essentially works like the following:
+```js
+const reducer = createReducer({
+  [SET_USER]: (state, action) => state.withMutations(state => {
+    state.update('user', oldUser => setUser(oldUser, action))
+    state.update('userChangeCount', count => incUserChangeCount(count, action))
+  }),
+  [UPDATE_USER]: (state, action) => state.update('user', user => updateUser(user, action))
+})
+```
+
 ### Caveats
 
 Due to this optimization, unlike other `combineReducers` implementations, if you call the combined reducer with an

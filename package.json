@@ -75,7 +75,7 @@
     "nyc": "^11.0.1",
     "pre-commit": "^1.2.2",
     "rimraf": "^2.6.1",
-    "semantic-release": "^7.0.1"
+    "semantic-release": "^8.2.0"
   },
   "dependencies": {
     "lodash.foreach": "^4.5.0",

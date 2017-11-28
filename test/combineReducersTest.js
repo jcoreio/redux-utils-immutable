@@ -130,11 +130,11 @@ describe('combineReducers', () => {
       }),
     }, Counters)
 
-    expect(reducer(undefined, {type: 'a'})).to.equal(Counters({a: 1, b: 0, c: 0}))
-    expect(reducer(undefined, {type: 'ab'})).to.equal(Counters({a: 1, b: 1, c: 0}))
-    expect(reducer(undefined, {type: 'abc'})).to.equal(Counters({a: 1, b: 1, c: 1}))
-    expect(reducer(Counters(), {type: 'a'})).to.equal(Counters({a: 1, b: 0, c: 0}))
-    expect(reducer(Counters(), {type: 'ab'})).to.equal(Counters({a: 1, b: 1, c: 0}))
-    expect(reducer(Counters(), {type: 'abc'})).to.equal(Counters({a: 1, b: 1, c: 1}))
+    expect(reducer(undefined, {type: 'a'}).toJS()).to.deep.equal(Counters({a: 1, b: 0, c: 0}).toJS())
+    expect(reducer(undefined, {type: 'ab'}).toJS()).to.deep.equal(Counters({a: 1, b: 1, c: 0}).toJS())
+    expect(reducer(undefined, {type: 'abc'}).toJS()).to.deep.equal(Counters({a: 1, b: 1, c: 1}).toJS())
+    expect(reducer(Counters(), {type: 'a'}).toJS()).to.deep.equal(Counters({a: 1, b: 0, c: 0}).toJS())
+    expect(reducer(Counters(), {type: 'ab'}).toJS()).to.deep.equal(Counters({a: 1, b: 1, c: 0}).toJS())
+    expect(reducer(Counters(), {type: 'abc'}).toJS()).to.deep.equal(Counters({a: 1, b: 1, c: 1}).toJS())
   })
 })

@@ -91,7 +91,7 @@
     "husky": "^0.14.3",
     "immutable": "^4.0.0-rc.9",
     "istanbul": "^0.4.5",
-    "mindfront-redux-utils": "^1.6.1",
+    "mindfront-redux-utils": "^2.0.0",
     "mocha": "^4.1.0",
     "nyc": "^11.4.1",
     "rimraf": "^2.6.1",
@@ -103,6 +103,6 @@
   },
   "peerDependencies": {
     "immutable": "^3.8.1 || ^4.0.0 || ^4.0.0-rc",
-    "mindfront-redux-utils": "^1.2.3"
+    "mindfront-redux-utils": "^2.0.0"
   }
 }

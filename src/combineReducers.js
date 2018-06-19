@@ -1,7 +1,4 @@
-import reduce from 'lodash.reduce'
-import forEach from 'lodash.foreach'
-import mapValues from 'lodash.mapvalues'
-import size from 'lodash.size'
+import { reduce, forEach, mapValues, size } from "lodash"
 import {Map} from 'immutable'
 import {createReducer, composeReducers} from 'mindfront-redux-utils'
 

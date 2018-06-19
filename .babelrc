@@ -1,24 +1,38 @@
 {
-  "presets": [
-    "flow"
+  presets: [
+    'flow',
   ],
-  "env": {
-    "test": {
-      "presets": [
-        ["env", {"targets": {"node": "current"}}]
+  env: {
+    test: {
+      presets: [
+        [
+          'env',
+          {
+            targets: {
+              node: 'current',
+            },
+          },
+        ],
       ],
-      "plugins": [
-        "transform-runtime",
-        "istanbul"
-      ]
-    },
-    "es5": {
-      "presets": [
-        ["env", {"forceAllTransforms": true}]
+      plugins: [
+        'transform-runtime',
+        'istanbul',
+        'lodash',
       ],
-      "plugins": [
-        "transform-runtime"
-      ]
     },
-  }
+    es5: {
+      presets: [
+        [
+          'env',
+          {
+            forceAllTransforms: true,
+          },
+        ],
+      ],
+      plugins: [
+        'transform-runtime',
+        'lodash',
+      ],
+    },
+  },
 }

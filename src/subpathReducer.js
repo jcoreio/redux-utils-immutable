@@ -1,5 +1,5 @@
 import {createReducer} from 'mindfront-redux-utils'
-import mapValues from 'lodash.mapvalues'
+import { mapValues } from "lodash"
 
 export default function subpathReducer(subpath, initialState) {
   if (typeof subpath !== 'function') {

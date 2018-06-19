@@ -1,37 +1,40 @@
 {
-  presets: [
-    'flow',
+  "plugins": [
+    "syntax-dynamic-import",
+    "transform-class-properties",
+    "transform-export-extensions",
+    "transform-object-rest-spread",
+    "lodash"
   ],
-  env: {
-    test: {
-      presets: [
-        [
-          'env',
-          {
-            targets: {
-              node: 'current',
-            },
-          },
-        ],
+  "presets": [
+    "flow"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        ["env", {"targets": {"node": "current"}}],
+        "stage-1", "flow"
       ],
-      plugins: [
-        'transform-runtime',
-        'istanbul',
-        'lodash',
-      ],
+      "plugins": [
+        "transform-runtime",
+        "lodash"
+      ]
     },
-    es5: {
-      presets: [
-        [
-          'env',
-          {
-            forceAllTransforms: true,
-          },
-        ],
+    "coverage": {
+      "presets": [
+        ["env", {"targets": {"node": "current"}}],
+        "stage-1", "flow"
       ],
-      plugins: [
-        'transform-runtime',
-        'lodash',
+      "plugins": [
+        "istanbul",
+        "transform-runtime",
+        "lodash"
+      ]
+    },
+    "es5": {
+      "presets": [
+        ["env", {"forceAllTransforms": true}],
+        "stage-1", "flow"
       ],
     },
   },

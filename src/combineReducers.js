@@ -1,6 +1,6 @@
-import { reduce, forEach, mapValues, size } from "lodash"
-import {Map} from 'immutable'
-import {createReducer, composeReducers} from 'mindfront-redux-utils'
+import { reduce, forEach, mapValues, size } from 'lodash'
+import { Map } from 'immutable'
+import { createReducer, composeReducers } from 'mindfront-redux-utils'
 
 export default function combineReducers(reducers, createInitialState = Map) {
   const actionHandlers = {}
@@ -16,7 +16,9 @@ export default function combineReducers(reducers, createInitialState = Map) {
     initialStateObj[key] = reducer(undefined, {})
     if (reducer.actionHandlers) {
       forEach(reducer.actionHandlers, (actionHandler, type) => {
-        (actionHandlers[type] || (actionHandlers[type] = {}))[key] = actionHandler
+        ;(actionHandlers[type] || (actionHandlers[type] = {}))[
+          key
+        ] = actionHandler
       })
     } else otherReducers[key] = reducer
   })
@@ -30,16 +32,21 @@ export default function combineReducers(reducers, createInitialState = Map) {
     let result
     if (size(reducers) > 1) {
       // we have to update multiple keys; use state.withMutations
-      result = (state = initialState, action) => state.withMutations(mutableState => reduce(
-        reducers,
-        (nextState, reducer, key) => nextState.update(key, value => reducer(value, action)),
-        mutableState)
-      )
+      result = (state = initialState, action) =>
+        state.withMutations(mutableState =>
+          reduce(
+            reducers,
+            (nextState, reducer, key) =>
+              nextState.update(key, value => reducer(value, action)),
+            mutableState
+          )
+        )
     } else {
       // we only have to update one key; use state.update
       const key = Object.keys(reducers)[0]
       const reducer = reducers[key]
-      result = (state = initialState, action) => state.update(key, value => reducer(value, action))
+      result = (state = initialState, action) =>
+        state.update(key, value => reducer(value, action))
     }
     result.domainHandlers = reducers
     return result
@@ -53,10 +60,9 @@ export default function combineReducers(reducers, createInitialState = Map) {
     ? combineBase(otherReducers)
     : undefined
 
-  if (actionHandlerReducer && otherReducer) return composeReducers(actionHandlerReducer, otherReducer)
+  if (actionHandlerReducer && otherReducer)
+    return composeReducers(actionHandlerReducer, otherReducer)
   if (actionHandlerReducer) return actionHandlerReducer
   if (otherReducer) return otherReducer
   return (state = initialState) => state
 }
-
-

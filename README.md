@@ -54,14 +54,14 @@ const reducer = combineReducers({
 ```js
 const reducer = createReducer({
   [SET_USER]: (state, action) =>
-    state.withMutations(state => {
-      state.update('user', oldUser => setUser(oldUser, action))
-      state.update('userChangeCount', count =>
+    state.withMutations((state) => {
+      state.update('user', (oldUser) => setUser(oldUser, action))
+      state.update('userChangeCount', (count) =>
         incUserChangeCount(count, action)
       )
     }),
   [UPDATE_USER]: (state, action) =>
-    state.update('user', user => updateUser(user, action)),
+    state.update('user', (user) => updateUser(user, action)),
 })
 ```
 
@@ -77,12 +77,12 @@ import { combineReducers } from 'mindfront-redux-utils-immutable'
 
 const reducer = combineReducers({
   a: createReducer(0, {
-    a: state => state + 1,
-    ab: state => state + 1,
+    a: (state) => state + 1,
+    ab: (state) => state + 1,
   }),
   b: createReducer(0, {
-    ab: state => state + 1,
-    b: state => state + 1,
+    ab: (state) => state + 1,
+    b: (state) => state + 1,
   }),
 })
 
@@ -106,12 +106,12 @@ const MyRecord = Record({ a: 0, b: 0 })
 const reducer = combineReducers(
   {
     a: createReducer(0, {
-      a: state => state + 1,
-      ab: state => state + 1,
+      a: (state) => state + 1,
+      ab: (state) => state + 1,
     }),
     b: createReducer(0, {
-      ab: state => state + 1,
-      b: state => state + 1,
+      ab: (state) => state + 1,
+      b: (state) => state + 1,
     }),
   },
   MyRecord

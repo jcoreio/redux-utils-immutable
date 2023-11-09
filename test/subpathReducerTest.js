@@ -1,10 +1,7 @@
-import chai, { expect } from 'chai'
-import chaiImmutable from 'chai-immutable'
+import { expect } from 'chai'
 import { Map, fromJS } from 'immutable'
 import { createReducer } from 'mindfront-redux-utils'
 import subpathReducer from '../src/subpathReducer'
-
-chai.use(chaiImmutable)
 
 describe('subpathReducer', () => {
   const increment = (state = 0, action) =>
@@ -22,9 +19,12 @@ describe('subpathReducer', () => {
     )
   })
   it('works for reducer with actionHandlers', () => {
-    const reducer = subpathReducer(['a', 'b'], Map())(
+    const reducer = subpathReducer(
+      ['a', 'b'],
+      Map()
+    )(
       createReducer(0, {
-        INCREMENT: state => state + 1,
+        INCREMENT: (state) => state + 1,
       })
     )
 
@@ -39,9 +39,12 @@ describe('subpathReducer', () => {
     )
   })
   it("calls subpath with action if it's a function", () => {
-    const reducer = subpathReducer(action => action.meta.reduxPath, Map())(
+    const reducer = subpathReducer(
+      (action) => action.meta.reduxPath,
+      Map()
+    )(
       createReducer(0, {
-        INCREMENT: state => state + 1,
+        INCREMENT: (state) => state + 1,
       })
     )
 

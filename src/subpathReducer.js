@@ -6,20 +6,22 @@ export default function subpathReducer(subpath, initialState) {
     const fixedSubpath = subpath
     subpath = () => fixedSubpath
   }
-  return reducer => {
+  return (reducer) => {
     const { actionHandlers } = reducer
     if (actionHandlers instanceof Object) {
       const initialSubState = reducer.initialState
       return createReducer(
         initialState,
-        mapValues(actionHandlers, reducer => (state, action) =>
-          state.updateIn(subpath(action), (substate = initialSubState) =>
-            reducer(substate, action)
-          )
+        mapValues(
+          actionHandlers,
+          (reducer) => (state, action) =>
+            state.updateIn(subpath(action), (substate = initialSubState) =>
+              reducer(substate, action)
+            )
         )
       )
     }
     return (state = initialState, action) =>
-      state.updateIn(subpath(action), substate => reducer(substate, action))
+      state.updateIn(subpath(action), (substate) => reducer(substate, action))
   }
 }

@@ -16,9 +16,8 @@ export default function combineReducers(reducers, createInitialState = Map) {
     initialStateObj[key] = reducer(undefined, {})
     if (reducer.actionHandlers) {
       forEach(reducer.actionHandlers, (actionHandler, type) => {
-        ;(actionHandlers[type] || (actionHandlers[type] = {}))[
-          key
-        ] = actionHandler
+        ;(actionHandlers[type] || (actionHandlers[type] = {}))[key] =
+          actionHandler
       })
     } else otherReducers[key] = reducer
   })
@@ -28,16 +27,16 @@ export default function combineReducers(reducers, createInitialState = Map) {
   // and one more efficient reducer for the otherReducers
 
   // creates an efficient reducer from a prop name -> reducer map
-  const combineBase = reducers => {
+  const combineBase = (reducers) => {
     let result
     if (size(reducers) > 1) {
       // we have to update multiple keys; use state.withMutations
       result = (state = initialState, action) =>
-        state.withMutations(mutableState =>
+        state.withMutations((mutableState) =>
           reduce(
             reducers,
             (nextState, reducer, key) =>
-              nextState.update(key, value => reducer(value, action)),
+              nextState.update(key, (value) => reducer(value, action)),
             mutableState
           )
         )
@@ -46,7 +45,7 @@ export default function combineReducers(reducers, createInitialState = Map) {
       const key = Object.keys(reducers)[0]
       const reducer = reducers[key]
       result = (state = initialState, action) =>
-        state.update(key, value => reducer(value, action))
+        state.update(key, (value) => reducer(value, action))
     }
     result.domainHandlers = reducers
     return result

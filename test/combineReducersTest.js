@@ -1,8 +1,5 @@
-import chai, { expect } from 'chai'
-import chaiImmutable from 'chai-immutable'
+import { expect } from 'chai'
 import { Map, Record } from 'immutable'
-
-chai.use(chaiImmutable)
 
 import combineReducers from '../src/combineReducers'
 import { createReducer } from 'mindfront-redux-utils'

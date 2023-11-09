@@ -1,7 +1,7 @@
 import { AnyAction, Reducer } from 'redux'
 import { Map as iMap, RecordOf } from 'immutable'
 
-type RecordProps<S extends RecordOf<any>> = S extends RecordOf<infer P>
+type RecordProps<S extends RecordOf<any>> = S extends { toJSON(): infer P }
   ? P
   : never
 

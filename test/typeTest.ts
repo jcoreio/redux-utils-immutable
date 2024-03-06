@@ -43,7 +43,7 @@ const reducer1: Reducer<Auth, AuthAction> = combineReducers<Auth, AuthAction>(
 const reducer2: Reducer<
   iMap<'a' | 'b', string | null | undefined>,
   AuthAction
-> = combineReducers<iMap<'a' | 'b', string | null | undefined>>(
+> = combineReducers<iMap<'a' | 'b', string | null | undefined>, AuthAction>(
   {
     a: (state: string | null | undefined, action: AuthAction) =>
       action.type === LOGOUT ? action.payload?.error : state,

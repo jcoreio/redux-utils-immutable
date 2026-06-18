@@ -51,13 +51,13 @@ export default function combineReducers(reducers, createInitialState = Map) {
     return result
   }
 
-  const actionHandlerReducer = size(actionHandlers)
-    ? createReducer(initialState, mapValues(actionHandlers, combineBase))
+  const actionHandlerReducer =
+    size(actionHandlers) ?
+      createReducer(initialState, mapValues(actionHandlers, combineBase))
     : undefined
 
-  const otherReducer = size(otherReducers)
-    ? combineBase(otherReducers)
-    : undefined
+  const otherReducer =
+    size(otherReducers) ? combineBase(otherReducers) : undefined
 
   if (actionHandlerReducer && otherReducer)
     return composeReducers(actionHandlerReducer, otherReducer)

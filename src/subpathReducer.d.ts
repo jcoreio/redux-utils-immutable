@@ -1,4 +1,4 @@
-import { AnyAction } from 'redux'
+import { UnknownAction } from 'redux'
 
 interface Updatable {
   updateIn(
@@ -10,6 +10,6 @@ interface Updatable {
 export default function subpathReducer<S extends Updatable, V = unknown>(
   subpath: Iterable<unknown>,
   initialState: V
-): <A extends AnyAction = AnyAction>(
+): <A extends UnknownAction = UnknownAction>(
   reducer: (state: V, action: A) => V
 ) => (state: S, action: A) => S

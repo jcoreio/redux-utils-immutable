@@ -13,7 +13,7 @@ export default function combineReducers<
   A extends UnknownAction = UnknownAction,
 >(
   reducers: {
-    [K in keyof RecordProps<S>]: (
+    [K in keyof RecordProps<S>]?: (
       state: RecordProps<S>[K],
       action: A
     ) => RecordProps<S>[K]
@@ -25,7 +25,7 @@ export default function combineReducers<
   A extends UnknownAction = UnknownAction,
 >(
   reducers: {
-    [K in MapKey<S>]: (state: MapValue<S>, action: A) => MapValue<S>
+    [K in MapKey<S>]?: (state: MapValue<S>, action: A) => MapValue<S>
   },
   createInitialState?: (props: Record<MapKey<S>, MapValue<S>>) => S
 ): Reducer<S, A>
